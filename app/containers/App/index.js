@@ -14,7 +14,7 @@ import { Switch, Route } from "react-router-dom";
 import HomePage from "containers/HomePage/Loadable";
 import FeaturePage from "containers/FeaturePage/Loadable";
 import NotFoundPage from "containers/NotFoundPage/Loadable";
-import Header from "components/Header";
+// import Header from "components/Header";
 import Footer from "components/Footer";
 
 const AppWrapper = styled.div`

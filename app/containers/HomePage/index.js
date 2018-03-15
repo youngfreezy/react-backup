@@ -3,11 +3,13 @@
  *
  * This is the first thing users see of our App, at the '/' route
  */
-
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
+import ReactTable from "react-table";
+import "react-table/react-table.css";
+import mockData from "./mockData";
 import { Helmet } from "react-helmet";
-import { FormattedMessage } from "react-intl";
+// import { FormattedMessage } from "react-intl";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { createStructuredSelector } from "reselect";
@@ -19,22 +21,20 @@ import {
   makeSelectLoading,
   makeSelectError,
 } from "containers/App/selectors";
-import H2 from "components/H2";
-import ReposList from "components/ReposList";
-import AtPrefix from "./AtPrefix";
+// import H2 from "components/H2";
+// import ReposList from "components/ReposList";
+// import AtPrefix from "./AtPrefix";
 import CenteredSection from "./CenteredSection";
-import Form from "./Form";
-import Input from "./Input";
-import Section from "./Section";
-import messages from "./messages";
+// import Form from "./Form";
+// import Input from "./Input";
+// import Section from "./Section";
+// import messages from "./messages";
 import { loadRepos } from "../App/actions";
 import { changeUsername } from "./actions";
 import { makeSelectUsername } from "./selectors";
 import reducer from "./reducer";
 import saga from "./saga";
-import ReactTable from "react-table";
-import "react-table/react-table.css";
-import mockData from "./mockData";
+
 
 export class HomePage extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function
@@ -66,12 +66,12 @@ export class HomePage extends React.PureComponent {
     );
   }
   render() {
-    const { loading, error, repos } = this.props;
-    const reposListProps = {
-      loading,
-      error,
-      repos,
-    };
+    // const { loading, error, repos } = this.props;
+    // const reposListProps = {
+    //   loading,
+    //   error,
+    //   repos,
+    // };
 
     const { data } = this.state;
 
@@ -102,11 +102,11 @@ export class HomePage extends React.PureComponent {
             <ReactTable
               data={data}
               columns={columns}
-              showPagination={true}
+              showPagination
               showPaginationTop={false}
-              showPaginationBottom={true}
-              showPageSizeOptions={true}
-              filterable={true}
+              showPaginationBottom
+              showPageSizeOptions
+              filterable
             />
           </CenteredSection>
         </div>
@@ -115,14 +115,11 @@ export class HomePage extends React.PureComponent {
   }
 }
 
-HomePage.propTypes = {
-  loading: PropTypes.bool,
-  error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-  repos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  onSubmitForm: PropTypes.func,
-  username: PropTypes.string,
-  onChangeUsername: PropTypes.func,
-};
+// HomePage.propTypes = {
+//   loading: PropTypes.bool,
+//   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+//   repos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool])
+// };
 
 export function mapDispatchToProps(dispatch) {
   return {
